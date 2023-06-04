@@ -34,6 +34,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./main.exe
-          asset_name: main.exe
+          asset_path: ./shut_hitman.exe
+          asset_name: shut_hitman.exe
           asset_content_type: application/octet-stream
