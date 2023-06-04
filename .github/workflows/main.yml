@@ -3,36 +3,37 @@ name: Build and Release
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Setup Visual Studio Environment
-      uses: ilammy/msvc-dev-cmd@v1
+      - name: Setup Visual Studio Environment
+        uses: ilammy/msvc-dev-cmd@v1
 
-    - name: Compile C++ file
-      run: cl /EHsc /DNDEBUG /O2 /Fe:shut_hitman.exe main.cpp /link User32.lib Shell32.lib
+      - name: Compile C++ file
+        run: cl /EHsc /DNDEBUG /O2 /Fe:shut_hitman.exe main.cpp /link User32.lib Shell32.lib
 
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
 
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./main.exe
-        asset_name: main.exe
-        asset_content_type: application/octet-stream
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./main.exe
+          asset_name: main.exe
+          asset_content_type: application/octet-stream
