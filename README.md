@@ -2,7 +2,7 @@
 
 Safely closes the process of HITMAN 3 (HITMAN World of Assassination), mainly used for Freelancer mode.
 
-Alternative to ALT+F4 since it now leads to failing a mission.
+Alternative to ALT+F4 since it [now leads to failing a mission](https://ioi.dk/hidden/h3-patchnotes?panel=hitman%2Fpatch-notes%2F2023%2Fhitman-woa-may-patch-notes#:~:text=Alternate%20Function%20Four).
 
 # Usage
 1. Open `shut_hitman.exe`
