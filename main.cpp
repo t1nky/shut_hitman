@@ -53,7 +53,6 @@ LRESULT CALLBACK LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
         // std::cout << "Virtual key code: " << pKbdStruct->vkCode << std::endl;
         if (pKbdStruct->vkCode == VK_F5)
         {
-            std::cout << "A key pressed" << std::endl;
             if (KillProcessByName("HITMAN3.exe"))
             {
                 std::cout << "Process killed successfully." << std::endl;
